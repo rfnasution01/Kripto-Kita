@@ -1,8 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { api } from './api'
+import darkModeReducer from './slices/darkModeSlicer'
 
 export const store = configureStore({
   reducer: {
+    darkMode: darkModeReducer,
     [api.reducerPath]: api.reducer,
   },
   middleware: (getDefaultMiddleware) =>

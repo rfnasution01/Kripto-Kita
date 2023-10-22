@@ -2,6 +2,9 @@ import { getRates } from '@/store/slices/listCurrencyAPI'
 import { convertToTitleCase } from '@/utils'
 import { Box, Grid, Typography } from '@mui/material'
 import logo from '@/assets/img/logo.jpeg'
+import logoDark from '@/assets/img/logo-dark.png'
+import { useSelector } from 'react-redux'
+import { getIsDarkMode } from '@/store/slices/darkModeSlicer'
 
 interface ListCurrencyProps {
   data: getRates[]
@@ -16,6 +19,8 @@ export function ListCurrencyMapping({
   setIdCurrency,
   handleClose,
 }: ListCurrencyProps) {
+  const isDarkMode = useSelector(getIsDarkMode)
+
   return (
     <Grid container spacing={2}>
       {data?.map((item, idx) => (
@@ -38,8 +43,13 @@ export function ListCurrencyMapping({
             sx={{
               p: '12px',
               borderRadius: '12px',
-              ':hover': { bgcolor: '#f5feff' },
-              bgcolor: idCurrency === item?.symbol && '#f5feff',
+              ':hover': { bgcolor: isDarkMode ? '#1a222b' : '#f5feff' },
+              bgcolor:
+                idCurrency === item?.symbol && isDarkMode
+                  ? '#1a222b'
+                  : idCurrency === item?.symbol && !isDarkMode
+                  ? '#f5feff'
+                  : 'transparent',
               border: '1px solid #0ea5e9',
               display: 'flex',
               alignItems: 'center',
@@ -47,7 +57,11 @@ export function ListCurrencyMapping({
               height: '100%',
             }}
           >
-            <img src={logo} alt="Kripto kita" width={30} />
+            <img
+              src={isDarkMode ? logoDark : logo}
+              alt="Kripto kita"
+              width={30}
+            />
             <Box sx={{ display: 'flex', flexDirection: 'column' }}>
               <Typography
                 sx={{

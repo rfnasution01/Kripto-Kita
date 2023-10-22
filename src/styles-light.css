@@ -1,0 +1,9 @@
+.light-mode {
+  background-color: #fff;
+  color: #000;
+}
+
+.light-mode .header {
+  background-color: #f5f5f5;
+  color: #000;
+}
