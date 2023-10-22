@@ -1,6 +1,8 @@
+import { getIsDarkMode } from '@/store/slices/darkModeSlicer'
 import { Box, IconButton, Typography } from '@mui/material'
 import { ChevronDown, ChevronUp } from 'lucide-react'
 import { CSSProperties } from 'react'
+import { useSelector } from 'react-redux'
 
 interface FilterButtonProps {
   value: boolean
@@ -17,6 +19,7 @@ export function FilterButton({
   color,
   className,
 }: FilterButtonProps) {
+  const isDarkMode = useSelector(getIsDarkMode)
   return (
     <Box
       sx={{
@@ -30,7 +33,7 @@ export function FilterButton({
         borderRadius: '8px',
         cursor: 'pointer',
         ':hover': {
-          bgcolor: color ? color : '#f5feff',
+          bgcolor: color ? color : isDarkMode ? '#1a222b' : '#f5feff',
           color: '#fff',
         },
         ...className,

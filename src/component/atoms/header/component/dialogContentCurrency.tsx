@@ -7,7 +7,8 @@ import { SearchComponent } from '../../search'
 import Fuse from 'fuse.js'
 import { ListCurrencyMapping } from './listCurrencyMapping'
 import { FilterButton, FilterComponent } from '../../filter'
-
+import { useSelector } from 'react-redux'
+import { getIsDarkMode } from '@/store/slices/darkModeSlicer'
 interface dialogCurrencyProps {
   setIdCurrency: (idCurrency: string) => void
   idCurrency: string
@@ -50,6 +51,8 @@ export function DialogContentCurrency({
     setIsSearching(true)
   }
 
+  const isDarkMode = useSelector(getIsDarkMode)
+
   return (
     <>
       <Box
@@ -57,7 +60,7 @@ export function DialogContentCurrency({
           position: 'sticky',
           top: 0,
           py: '20px',
-          bgcolor: '#fff',
+          bgcolor: isDarkMode ? '#000' : '#fff',
           zIndex: 1,
         }}
       >
