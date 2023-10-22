@@ -61,7 +61,13 @@ export default function Header() {
           <Badge
             badgeContent={4}
             color="error"
-            sx={{ p: 0, color: '#0ea5e9', cursor: 'pointer' }}
+            sx={{
+              p: 0,
+              color: '#0ea5e9',
+              cursor: 'pointer',
+              cursor: 'not-allowed',
+              pointerEvents: 'none',
+            }}
           >
             <BellIcon />
           </Badge>
