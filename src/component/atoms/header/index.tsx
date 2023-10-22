@@ -64,7 +64,6 @@ export default function Header() {
             sx={{
               p: 0,
               color: '#0ea5e9',
-              cursor: 'pointer',
               cursor: 'not-allowed',
               pointerEvents: 'none',
             }}
